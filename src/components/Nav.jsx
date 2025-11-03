@@ -1,4 +1,5 @@
 import { useAppData } from "../contexts/AppData";
+import { NavLink } from "react-router";
 
 const Nav = () => {
 
@@ -11,7 +12,9 @@ const Nav = () => {
     return (
         <nav className="fixed top-0 w-full flex bg-[#3b2e21] text-[#fdebca] px-10 h-14 items-center">
             <div className="flex-1">
-                <span className="font-title text-2xl">Rbeer</span>
+                <NavLink to="/" className="font-title text-2xl">
+                    Rbeer
+                </NavLink>
             </div>
             <div className="flex items-center">
                 <ul className="flex">

@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import logo from '../assets/img/logo.png';
 import { useNavigate } from 'react-router';
 import { useAppData } from '../contexts/AppData';
@@ -9,6 +9,8 @@ const Login = () => {
 
     const navigate = useNavigate();
     const appData = useAppData();
+    
+    const [fail2Auth, setFail2Auth] = useState(false);
 
     const username_ref = useRef(null);
     const password_ref = useRef(null);
@@ -21,6 +23,8 @@ const Login = () => {
         if (username === 'admin' && password === 'admin') {
             appData.auth.setAuthenticated(true);
             navigate('/');
+        }else{
+            setFail2Auth(true);
         }
     };
 
@@ -30,9 +34,10 @@ const Login = () => {
                 <img src={logo} alt="Logo" className="w-60 h-auto mx-auto" />
                 <h2 className="text-center text-xl font-bold">Bejelentkezés</h2>
                 <div className="flex flex-col space-y-5 mt-5">
-                    <Input ref={username_ref} type="text" placeholder="Felhasználó" required />
-                    <Input ref={password_ref} type="password" placeholder="Jelszó" required />
-                    <button type="submit" className="bg-[#3b2e21] text-white py-2 rounded-lg font-bold hover:bg-[#5a4636] transition duration-300">Bejelentkezés</button>
+                    <Input ref={username_ref} type="text" placeholder="Felhasználó" className={"rounded-full"} required />
+                    <Input ref={password_ref} type="password" placeholder="Jelszó" className={"rounded-full"} required />
+                    <button type="submit" className="bg-[#3b2e21] text-white py-2 rounded-full font-bold hover:bg-[#5a4636] transition duration-300">Bejelentkezés</button>
+                    {fail2Auth && (<p className='text-red-500 text-center'>Sikertelen bejelentkezés</p>)}
                 </div>
             </form>
         </div>

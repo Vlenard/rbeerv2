@@ -11,7 +11,7 @@ const Auth = () => {
         <>
             <Nav />
             
-            <div className="flex-1 pt-14">
+            <div className="flex-1">
                 <Outlet /> 
             </div>
         </>

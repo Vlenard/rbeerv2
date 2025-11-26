@@ -8,8 +8,14 @@ const AppData = (props) => {
   const navigate = useNavigate();
 
   const [beers, setBeers] = useState(
-    localStorage.getItem('beers') && localStorage.getItem('beers').length != 0 ? JSON.parse(localStorage.getItem('beers')) : []);
-  const [authenticated, setAuthenticated] = useState(localStorage.getItem('authenticated') ? JSON.parse(localStorage.getItem('authenticated')) : false);
+    localStorage.getItem('beers') && localStorage.getItem('beers').length != 0 
+    ? JSON.parse(localStorage.getItem('beers')) 
+    : 
+    []);
+  const [authenticated, setAuthenticated] = useState(
+    localStorage.getItem('authenticated') 
+    ? JSON.parse(localStorage.getItem('authenticated')) 
+    : false);
 
   const add = (beer) => {
     beer.id = parseInt((localStorage.getItem("prevId") || "-1")) + 1;

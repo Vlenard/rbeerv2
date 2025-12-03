@@ -23,8 +23,7 @@ const Landing = () => {
             </div>
 
             <div className="bg-[#3b2e21] text-white text-center p-4 select-none">
-                Találd meg a következő kedvenced a közösség pontszámai alapján, vagy mutasd meg, melyik főzet nyerte el igazán a
-                tetszésed.
+                Listázd és értékeld kedvenc söreidet egy helyen!
             </div>
         </>
     );

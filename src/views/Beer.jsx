@@ -1,5 +1,5 @@
 import { useAppData } from '../contexts/AppData';
-import { useNavigate, useParams } from 'react-router';
+import { useParams } from 'react-router';
 import { useState } from 'react';
 import DeleteButton from "../components/Deletebutton"
 
@@ -7,7 +7,6 @@ const Beer = () => {
 
   const appData = useAppData();
   const params = useParams();
-  const navigate = useNavigate();
 
   const [beer, setBeer] = useState(appData.beer.beers.find(b => b.id === parseInt(params.id)) || {});
   const [edited, setEdited] = useState(false);
@@ -61,7 +60,7 @@ const Beer = () => {
 
             <div className='flex flex-col ps-5 justify-start items-center'>
               <label className="uppercase font-bold">Értékelés</label>
-              <input type="number" name="rating" onChange={onChange} value={beer.rating || ""} placeholder='5' className='w-20 px-5 py-2 text-xl border-b-2 border-[#3b2e21]/50 hover:border-[#3b2e21] focus:border-[#3b2e21] transition-colors' required />
+              <input min={1} max={5} type="number" name="rating" onChange={onChange} value={beer.rating || ""} placeholder='5' className='w-20 px-5 py-2 text-xl border-b-2 border-[#3b2e21]/50 hover:border-[#3b2e21] focus:border-[#3b2e21] transition-colors' required />
             </div>
           </div>
 

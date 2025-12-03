@@ -32,13 +32,9 @@ const Home = () => {
     }, [filter, appData.beer.beers]);
 
     useEffect(() => {
-        document.body.onscroll = () => {
-            setStucked(window.scrollY > stuckedThreshold);
-        };
+        document.body.onscroll = () => setStucked(window.scrollY > stuckedThreshold);
 
-        return () => {
-            document.body.onscroll = null;
-        };
+        return () => document.body.onscroll = null;
     }, []);
 
     return (
@@ -46,9 +42,9 @@ const Home = () => {
             <div className="flex items-center">
                 <img src={logo} alt="Logo" className="h-80 w-auto mx-auto" />
             </div>
-            <div className={`sticky top-14 flex justify-center z-10 py-2`}>
-                <div className={'flex w-auto py-3 px-7 rounded-full backdrop-blur-md bg-[#fdebca]/20' + (stucked ? ' shadow-2xl' : ' shadow-none')}>
-                    <Input onChange={onChange} placeholder="Keresés..." className={`rounded-full w-72`} />
+            <div className="sticky top-14 flex justify-center z-10 py-2">
+                <div className={`flex w-auto py-3 px-7 rounded-full backdrop-blur-md bg-[#fdebca]/20' ${stucked ? ' shadow-2xl' : ' shadow-none'}`}>
+                    <Input onChange={onChange} placeholder="Keresés..." className="rounded-full w-72" />
                     <button onClick={nav2Add} className='py-2 px-5 ml-4 bg-[#3b2e21] text-[#fdebca] rounded-full hover:bg-[#5a4736]'>
                         Adj hozzá sört
                     </button>
